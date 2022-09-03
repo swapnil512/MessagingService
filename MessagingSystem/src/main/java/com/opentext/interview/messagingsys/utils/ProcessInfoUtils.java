@@ -2,9 +2,17 @@ package com.opentext.interview.messagingsys.utils;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
-import java.lang.management.ThreadMXBean;
 
+/**
+ * A Utils class for extracting the process information.
+ * 
+ * @author swapn
+ *
+ */
 public class ProcessInfoUtils {
+
+	private ProcessInfoUtils() {
+	}
 
 	public static long showProcessInfo() {
 		RuntimeMXBean runtimeBean = ManagementFactory.getRuntimeMXBean();

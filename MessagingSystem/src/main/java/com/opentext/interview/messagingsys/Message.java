@@ -2,19 +2,25 @@ package com.opentext.interview.messagingsys;
 
 import java.io.Serializable;
 
+/**
+ * POJO of Messages object
+ * 
+ * @author swapnil
+ *
+ */
 public class Message implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private String messageId;
 	private long processingTime;
-	private String message;
+	private String payload;
 
-	public Message(String messageId, long processingTime, String message) {
+	public Message(String messageId, long processingTime, String payload) {
 		super();
 		this.messageId = messageId;
 		this.processingTime = processingTime;
-		this.message = message;
+		this.payload = payload;
 	}
 
 	public String getMessageId() {
@@ -33,18 +39,17 @@ public class Message implements Serializable {
 		this.processingTime = processingTime;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getPayload() {
+		return payload;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setPayload(String payload) {
+		this.payload = payload;
 	}
 
 	@Override
 	public String toString() {
-
-		return this.messageId + "|" + this.processingTime + "|" + this.message;
+		return this.messageId + "|" + this.processingTime + "|" + this.payload;
 	}
 
 }

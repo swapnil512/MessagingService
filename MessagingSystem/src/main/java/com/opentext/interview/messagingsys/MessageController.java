@@ -12,6 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Messages controller class for Calling the process messages endpoint. <br>
+ * Endpoint :: * "../interview/process-file/5" <br>
+ * 
+ * Messages file consist of | separated multiple lines of strings<br>
+ * for Example: <br>
+ * A|1000|Monday <br>
+ * B|1000|Wednesday <br>
+ * D|3000|Friday <br>
+ * A|50|Tuesday <br>
+ * B|100|Thursday <br>
+ * |10000| <br>
+ * D|100|Saturday<br>
+ * 
+ * 
+ * @author swapnil
+ *
+ */
 @RestController
 @RequestMapping(value = "interview")
 public class MessageController {
@@ -19,21 +37,19 @@ public class MessageController {
 	@Autowired
 	private MessageService service;
 
-	@PostMapping("/process-file/{consumerCount}")
-	public ResponseEntity<Object> createStream(@RequestParam("file") MultipartFile multipartFile,
-			@PathVariable("consumerCount") final int consumerCount) throws IOException {
+	/**
+	 * POST method which consumes the Multi-Part file containing the messages.
+	 * 
+	 * @param multipartFile - the file containing the messages
+	 * @param consumers     - number of consumers to use to process the file.
+	 * @return
+	 * @throws IOException
+	 */
+	@PostMapping(value = "/process-file/{consumers}")
+	public ResponseEntity<Object> processMessagesFile(@RequestParam("file") MultipartFile multipartFile,
+			@PathVariable("consumers") final int consumers) throws IOException {
 
-		System.out.println("Consumer count ::" + consumerCount);
-
-		service.process(multipartFile, consumerCount);
-
-//		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//		long size = multipartFile.getSize();
-//		System.out.println("OriginalFileName ::  " + fileName);
-//		System.out.println("OriginalFileName size::   " + size);
-//
-//		String filecode = FileUploadUtil.saveFile(fileName, multipartFile);
-//		System.out.println(filecode);
+		service.process(multipartFile, consumers);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
