@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "4f743d56-cc96-40e7-8da1-e55316d1843e",
+		"name": "OpenTextInterview",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21909585"
+	},
+	"item": [
+		{
+			"name": "MessagesFileRequest",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/D_Drive/Interviewes/OpenText/messages.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/interview/process-file/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"interview",
+						"process-file",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
